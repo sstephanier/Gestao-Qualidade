@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspetor - Dados Iniciais</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Preenchimento de Dados do Inspetor</h1>
+        <form id="inspetorForm">
+            <div class="form-group">
+                <label for="of">OF:</label>
+                <input type="text" id="of" name="of" required>
+            </div>
+            <div class="form-group">
+                <label for="cod_prod">Cód. Prod:</label>
+                <input type="text" id="cod_prod" name="cod_prod" required>
+            </div>
+            <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            <div class="form-group">
+                <label for="turno">Turno:</label>
+                <select id="turno" name="turno" required>
+                    <option value="">Selecione</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="re">RE:</label>
+                <input type="text" id="re" name="re" required>
+            </div>
+            <div class="form-group">
+                <label for="inspetor">Nome do Inspetor:</label>
+                <input type="text" id="inspetor" name="inspetor" required>
+            </div>
+            <button type="button" id="nextButton">Ir para Testes</button>
+        </form>
+
+        <div id="testes" style="display: none;">
+            <h2>Testes de Qualidade</h2>
+            <div id="medicoesContainer"></div>
+            <button type="button" id="exportButton">Exportar para Excel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
