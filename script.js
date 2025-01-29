@@ -39,15 +39,36 @@ document.addEventListener("DOMContentLoaded", () => {
         medicoesContainer.innerHTML = ""; // Limpa o contêiner antes de adicionar novos campos
         tests.forEach(test => {
             const section = document.createElement("div");
+            section.className = "test-section"; // Classe para estilização
+
             const header = document.createElement("h3");
             header.textContent = test;
+
+            // Criar o ícone de seta
+            const toggleIcon = document.createElement("span");
+            toggleIcon.textContent = " ▶ "; // Seta para a direita
+            toggleIcon.style.cursor = "pointer"; // Muda o cursor para indicar que é clicável
+            toggleIcon.style.marginRight = "5px"; // Espaçamento entre a seta e o texto
+
+            // Evento para alternar a visibilidade
+            toggleIcon.addEventListener("click", () => {
+                const inputs = section.querySelectorAll("input");
+                const isHidden = inputs[0].style.display === "none"; // Verifica se os inputs estão ocultos
+                inputs.forEach(input => {
+                    input.style.display = isHidden ? "block" : "none"; // Alterna a visibilidade
+                });
+                toggleIcon.textContent = isHidden ? " ▼ " : " ▶ "; // Alterna a seta
+            });
+
+            header.prepend(toggleIcon); // Adiciona a seta antes do texto do teste
             section.appendChild(header);
 
             for (let i = 1; i <= count; i++) {
                 const input = document.createElement("input");
                 input.type = "text"; // Permite qualquer tipo de entrada
                 input.name = `${test.replace(/[^a-zA-Z]/g, "_").toLowerCase()}_${i}`;
-                input.placeholder = `${test}${i}`;
+                input.placeholder = `${test} ${i}`;
+                input.style.display = "none"; // Começa oculto
                 section.appendChild(input);
             }
             medicoesContainer.appendChild(section);
